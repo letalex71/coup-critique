@@ -1,0 +1,64 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Team{% endblock %}
+
+{% block body %}
+    <h1 class="page-title">[GEN {{ team.tier.getGeneration }} ] {{ team.tier.getName }} - {{ team.name }}</h1>
+    <div class="row mx-5 mx-sm-0 justify-content-center d-flex">
+
+        {% for set in team.sets  %}
+
+            <div class="col-12 col-sm-4 col-md-3 pokemon-info">
+
+                <div class="d-flex align-items-center flex-column">
+                    {% if team.tier.getGeneration > 6  %}
+                        <img class="sprite" src="{{ asset('img/Pokémon/ani/' ~ set.pokemon.name ~ '.gif') }}" alt="Image de {{ set.pokemon.name }}">
+                    {% else %}
+                        <img class="sprite" src="{{ asset('img/Pokémon/gen' ~ team.tier.getGeneration ~ '/' ~ set.pokemon.name ~ '.png') }}" alt="Image de {{ set.pokemon.name }}">
+                    {% endif %}
+
+                    <div>
+                        <img src="{{ asset('img/Pokémon/types/' ~ set.pokemon.type1 ~ '.png') }}" alt="Image du type {{ set.pokemon.type1 }}">
+                        {% if set.pokemon.type2 is not null %}
+                            <img src="{{ asset('img/Pokémon/types/' ~ set.pokemon.type2 ~ '.png') }}" alt="Image du type {{ set.pokemon.type2 }}">
+                        {% endif %}
+                    </div>
+
+                    <h2 class="text-center">{{ set.pokemon.name|capitalize }}</h2>
+
+                </div>
+
+
+                <div class="set-details">
+
+                    {% if set.item is not empty %}
+                        <p class="h6">@ {{ set.item }}</p>
+                    {% endif %}
+
+                    <p class="h6">Talent :  {{ set.ability }}</p>
+                    <p class="h6">Nature : {{ set.nature }}</p>
+
+                    {% if set.evs is not empty %}
+                        <p class="h6">EVs : {{ set.evs }}</p>
+                    {% endif %}
+
+                    {% if set.ivs is not empty %}
+                        <p class="h6">iVs : {{ set.ivs }}</p>
+                    {% endif %}
+                </div>
+
+                <div class="pokemon-moves">
+                        <ul>
+                            {% for move in set.moves %}
+                                {# TODO: trouver un svg pour remplacer les ul decoration #}
+                                <li>- {{ move }}</li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+
+            </div>
+
+        {% endfor %}
+
+    </div>
+{% endblock %}

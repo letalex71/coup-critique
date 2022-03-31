@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Profile{% endblock %}
+
+{% block body %}
+
+    {{ dump(user) }}
+
+    <div class="team-display col-10 offset-1">
+
+            <div class="profile-picture" role="img" alt="Image de profile de {{ user.name }}"
+                 style="background-image:
+                 {% if user.profilpicture is null %}
+                         url('{{ asset('img/ProfilPictures/default.png') }}')
+                 {% else  %}
+                        url('{{ asset('img/ProfilPicutres/' ~ user.profilpicture) }}')
+                 {% endif %}
+                    " ></div>
+    </div>
+
+{% endblock %}

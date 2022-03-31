@@ -1,0 +1,185 @@
+body
+{
+    background-color: #f5f5f5;
+}
+
+a
+{
+    color: #555555;
+}
+
+a:hover
+{
+    color: #555555;
+    text-decoration: none;
+}
+
+.navbar
+{
+    padding: 0;
+}
+
+
+.title
+{
+    width: 100%;
+    font-family: 'Piedra', cursive;
+    font-size: 3em;
+    margin: 10px 0;
+    color: rgba(105, 105, 105, 0.8);
+}
+
+.header-container
+{
+    background-color: #ebebeb;
+    border: solid 1px #b9b9b9;
+    padding: 5px 0;
+    font-family: 'Yanone Kaffeesatz', sans-serif;
+    font-weight: bold;
+    font-size: 1.5em;
+}
+
+.main-nav-item
+{
+    margin: 5px;
+}
+
+.page-title
+{
+    font-family: 'Roboto', sans-serif;
+    color: #555555;
+    text-align: center;
+}
+
+.team-display
+{
+    background-color: #ebebeb;
+    color: #555555;
+    display: flex;
+    flex-direction: column;
+    border: solid 1px #555555;
+    border-radius: 5px;
+    width: 45%;
+    margin: 1% 1%;
+    padding: 5px;
+}
+
+.sprite
+{
+    border: solid 2px #555555;
+    border-radius: 5px;
+    background-color: #b9b9b9;
+    margin: 5px;
+}
+
+.team-info
+{
+    margin: 5px;
+}
+
+.team-author:hover , .team-name:hover
+{
+    text-decoration: underline;
+}
+
+.gen-1
+{
+    background-color: rgba(255, 255, 0, 0.31);
+}
+
+.gen-2
+{
+    background-color: rgba(0, 128, 0, 0.31);
+}
+
+.gen-3
+{
+    background-color: rgba(255, 0, 0, 0.3);
+}
+
+.gen-4
+{
+    background-color: rgba(0, 0, 255, 0.3);
+}
+
+.gen-5
+{
+    background-color: rgba(0, 0, 0, 0.31);
+}
+
+.tier-magnet
+{
+    border: solid 2px #555555;
+    border-radius: 5px;
+    padding: 5px;
+    display: flex;
+    justify-content: center;
+    font-weight: bolder;
+}
+
+.pokemon-info
+{
+    background-color: #ebebeb;
+    border: solid 1px #555555;
+    border-radius: 5px;
+    margin: 0.5em;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 20px;
+}
+
+.set-details
+{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.pokemon-moves
+{
+    background-color: #b9b9b9;
+    border: solid 2px #555555;
+    border-radius: 5px;
+    display: flex;
+    justify-content: left;
+    padding: 5px;
+    color: black;
+}
+
+.pokemon-moves ul
+{
+    list-style: none;
+    margin: 10px auto;
+    padding: 0;
+}
+
+.searchteam-bar
+{
+    border-right: solid 1px #b9b9b9;
+    border-bottom: solid 1px #b9b9b9;
+    background-color: #ebebeb;
+    padding: 2em;
+    display: flex;
+    flex-direction: column;
+
+}
+
+.searchteam-filter
+{
+    display: block;
+    position: -webkit-sticky;
+    position: sticky;
+}
+
+
+.profile-picture
+{
+    border-radius: 50%;
+    width: 10em;
+    height: 10em;
+
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+}

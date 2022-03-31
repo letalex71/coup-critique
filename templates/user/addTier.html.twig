@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Ajouter un tier{% endblock %}
+
+{% block body %}
+
+    {% for message in app.flashes('success') %}
+        <div style="color:green;">{{ message }}</div>
+    {% endfor %}
+
+    <h1 class="text-center">Ajouter un tier</h1>
+
+    {{ form(form) }}
+
+{% endblock %}

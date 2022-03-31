@@ -2,11 +2,69 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="{{ asset('css/dependencies/bootstrap.min.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/styles.css') }}">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css">
+        <link href="https://fonts.googleapis.com/css2?family=Yanone+Kaffeesatz:wght@300&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Piedra&family=Roboto&display=swap" rel="stylesheet">         <title>{% block title %}{% endblock %} - Coup Critique</title>
         {% block stylesheets %}{% endblock %}
     </head>
     <body>
+    <header>
+
+        <h1 class="title text-center">Coup Critique</h1>
+
+        <div class="d-flex header-container col-12 col-sm">
+            <nav class="navbar navbar-expand-md navbar-dark">
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+               <div class="collapse navbar-collapse">
+                   <ul class="navbar-nav mr-auto">
+                       <li class="main-nav-item">
+                           <a href="{{ path('index') }}" >Accueil</a>
+                       </li>
+                       <li class="main-nav-item">
+                           <a href="{{ path('search') }}">Equipes stratégiques</a>
+                       </li>
+                   </ul>
+               </div>
+            </nav>
+            <div class="auth-container my-auto d-flex mr-2 col-12 col-sm">
+                {%  if app.user %}
+                    <div class="dropdown">
+                        <button class="btn btn-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Menu
+                        </button>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                            <a class="dropdown-item" href="{{ path('add_team') }}">Ajouter une équipe</a>
+                            <a class="dropdown-item" href="{{ path('add_tier') }}">Ajouter un tier</a>
+                            <a class="dropdown-item" href="{{ path('profile', {'id' : app.user.id}) }}">Mon profile</a>
+                        </div>
+                    </div>
+                    <button class="btn btn-danger rounded mx-1 d-flex align-items-center p-1">
+                        <a href="{{ path('app_logout') }}" class="text-light">Déconnexion</a>
+                    </button>
+                {%  else %}
+                    <button class="btn btn-success rounded mx-1 d-flex align-items-center p-1">
+                        <a href="{{ path('app_register') }}" class="text-light">Inscription</a>
+                    </button>
+                    <button class="btn btn-primary rounded mx-1 d-flex align-items-center p-1">
+                        <a href="{{ path('app_login') }}" class="text-light">Connexion</a>
+                    </button>
+                {%  endif %}
+            </div>
+        </div>
+    </header>
+
+    <div class="container p-0 m-0 col-12">
         {% block body %}{% endblock %}
-        {% block javascripts %}{% endblock %}
+    </div>
+            <script src="{{ asset('js/dependencies/jquery-3.5.0.min.js') }}"></script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+            <script src="{{ asset('js/dependencies/bootstrap.bundle.min.js') }}"></script>
+
+    {% block javascript %}{% endblock %}
     </body>
 </html>

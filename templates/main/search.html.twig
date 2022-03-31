@@ -1,0 +1,75 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des équipes{% endblock %}
+
+{% block body %}
+
+        <div class="row">
+
+            {# Sidebar filtres de recherche #}
+            {# TODO: ajouter ce formulaire dans la page d'accueil et autres pages publiques #}
+            <div class="col-12 col-md-3 searchteam-bar">
+
+                {{ form_start(form, {attr: {class: 'searchteam-filter'}}) }}
+
+                <h4>Nom de l'équipe :</h4>
+                {{ form_row(form.q) }}
+
+                <h4>Tier :</h4>
+                {{ form_row(form.tiers) }}
+
+                <h4>Contient :</h4>
+                {{ form_row(form.pokemon) }}
+
+                <button type="submit" class="btn btn-secondary">Rechercher</button>
+
+                {{ form_end(form) }}
+
+            </div>
+
+            {# Affichage des teams #}
+            <div class="col-12 col-md-9">
+                <h1 class="page-title">Liste des équipes</h1>
+                <div class="row">
+                    {% for team in teams %}
+
+                        <div class="team-display">
+                            <a   href="{{ path('team', {'id' : team.id}) }}">
+                                <h2 class="h3 d-block text-center team-name">{{ team.name }}</h2></a>
+                            <div class="d-flex justify-content-between">
+
+
+                                {% for set in team.sets %}
+
+                                    {% if team.tier.getGeneration() > 6  %}
+                                        <img class="sprite" src="{{ asset('img/Pokémon/ani/' ~ set.pokemon.name ~ '.gif') }}" alt="Image de {{ set.pokemon.name }}">
+                                    {% else %}
+                                        <img class="sprite" src="{{ asset('img/Pokémon/gen' ~ team.tier.getGeneration() ~ '/' ~ set.pokemon.name ~ '.png') }}" alt="Image de {{ set.pokemon.name }}">
+                                    {% endif %}
+
+                                {% endfor %}
+                            </div>
+                            <div class="team-info row justify-content-between">
+                                <p class="d-block">Par : <a href="#"><small class="team-author">{{ team.author.email }}</small></a></p>
+                                <a href="{{ path('search', {'tiers' : team.tier.id}) }}">
+                                    <div class="tier-magnet gen-{{ team.tier.generation }}">
+                                    <p class="m-0">{{ team.tier.generation }}G {{ team.tier.name }}</p>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+
+                    {% endfor %}
+
+                </div>
+            </div>
+        </div>
+
+
+{% endblock %}
+
+{% block javascript %}
+
+<script src="{{ asset('js/searchteam-filter.js') }}"></script>
+
+{% endblock %}
